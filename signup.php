@@ -1,7 +1,8 @@
 <?php
 
 $db = json_decode(file_get_contents("../db.json"));
-$dbh = new PDO('pgsql:host='.$db->{'host'}.';port='.$db->{'port'}.';dbname='.$db->{'dbname'}.';user='.$db->{'user'}.';password='.$db->{'password'});
+$dbh = new PDO('pgsql:host='.$db->{'host'}.';port='.$db->{'port'}.';dbname='.$db->{'dbname'}.';user='.$db->{'user'}.';password='.$db->{'password'})
+	or die('Could not connect to database');
 
 $username = htmlspecialchars($_POST['username']);
 $password1 = $_POST['password1'];
@@ -23,23 +24,20 @@ function is_valid_input($user_exists, $username, $password1, $password2, $first_
 }
 
 function output_success() {
-	echo	'Sign up was successful!<br/><br/>'
-	.		'Click the Log In button below<br/><br/>'
-	.		'<form action="login.html">'
-	.			'<input type="submit" value="Log In"/>'
-	.		'</form>';
+	echo	'Sign up was successful!<br/><br/>';
+	echo	"<a href='login.html'>Log In</a>";
 }
 
 function output_errors($user_exists, $username, $password1, $password2, $first_name, $last_name) {
 	$limit = 'cannot exceed 60 characters';
 	if(strlen($username) > 60)
-		echo "Username $limit<br/>";
+		echo 'Username ' .$limit. '<br/>';
 	if(strlen($password1) > 60)
-		echo "Password $limit<br/>";
+		echo 'Password ' .$limit. '<br/>';
 	if(strlen($first_name) > 60)
-		echo "First name $limit<br/>";
+		echo 'First name ' .$limit. '<br/>';
 	if(strlen($last_name) > 60)
-		echo "Last name $limit<br/>";
+		echo 'Last name ' .$limit. '<br/>';
 	if($user_exists)
 		echo 'The username you entered already exists<br/>';
 	if($password1 != $password2)
