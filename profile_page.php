@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<?php session_start(); ?>
-<?php if(!isset($_SESSION['username'])) die('You must be logged in to access this page'); ?>
+<?php require('profile_functions.php'); ?>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8"/>
@@ -8,8 +7,13 @@
 	</head>
 	<body>
 		<div>
-			Hello <?php echo $_SESSION['username']; ?> <br/>
+			Hello <?php echo $username; ?> <br/>
+			
 			<a href="logout.php">Logout</a>
+			
+			<?php display_courses($stmt) ?>
+			
+			<?php display_groups($stmt2) ?>
 		</div>
 	</body>
 </html>
