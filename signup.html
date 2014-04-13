@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Dream Ticket | Sign Up</title>
+		<link rel="stylesheet" type="text/css" href="login_signup.css"/>
+		<script type="text/javascript" src="xmlhttp.js"></script>
+		<script type="text/javascript" src="login_signup.js"></script>
+	</head>
+	<body>
+		<div class="body">
+			<h1>Dream Ticket</h1>
+			<div class="form">
+				<form onsubmit="check_signup_validity(this.username.value, this.password1.value, this.password2.value, this.first_name.value, this.last_name.value); return false;">
+					<span id="username_response"></span><br/>
+					<input type="text" name="username" required placeholder="Username" autofocus autocomplete="off" onkeyup="check_user(this.value)" onfocus="document.getElementById('signup_response').style.display='none'"/><br/>
+					<input type="password" name="password1" required placeholder="Password" autocomplete="off" onfocus="document.getElementById('signup_response').style.display='none'"/><br/>
+					<input type="password" name="password2" required placeholder="Re-Enter Password"autocomplete="off" onfocus="document.getElementById('signup_response').style.display='none'"/><br/>
+					<br/>
+					<input type="text" name="first_name" required placeholder="First Name" autocomplete="off" onfocus="document.getElementById('signup_response').style.display='none'"/><br/>
+					<input type="text" name="last_name" required placeholder="Last Name" autocomplete="off" onfocus="document.getElementById('signup_response').style.display='none'"/><br/>
+					<br/>
+					<input type="submit" value="Sign Up" onclick="document.getElementById('signup_response').style.display='block'"/><br/>
+					<br/>
+				</form>
+			</div>
+			<div id="signup_response"></div>
+		</div>
+	</body>
+</html>
