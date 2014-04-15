@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<?php require('profile_functions.php'); ?>
+<?php require('display_courses.php'); ?>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8"/>
 		<title>Dream Ticket | Profile Page</title>
+		<script type="text/javascript" src="xmlhttp.js"></script>
+		<script type="text/javascript" src="login_signup.js"></script>
 	</head>
 	<body>
-		<div>
-			Hello <?php echo $username; ?> <br/>
+		<div class="body">
+			Hello <?php echo $username; ?>! <br/>
 			
 			<a href="logout.php">Logout</a>
 			
-			<?php display_courses($stmt) ?>
+			<div class="form>
+				<form action="">
+					<?php display_courses($stmt) ?>
+				</form>
+			</div>
 			
-			<?php display_groups($stmt2) ?>
+			<div id="groups"></div>
 		</div>
 	</body>
 </html>

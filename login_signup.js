@@ -21,3 +21,9 @@ function check_login_validity(username, password) {
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("username="+username+"&password="+password);
 }
+
+function display_groups(course_code) {
+	respond_in("groups");
+	xmlhttp.open("GET", "display_groups.php?course_code=" + course_code, true);
+	xmlhttp.send();
+}

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 
@@ -20,20 +20,7 @@ $stmt->execute();
 
 function display_courses($stmt) {
 	while($row = $stmt->fetch()) {
-		echo '<br/>'.$row['course_code'];
-	}
-}
-
-$query = 'SELECT group_name
-			FROM user_groups
-			WHERE username = :username';
-$stmt2 = $dbh->prepare($query);
-$stmt2->bindParam(':username', $username);
-$stmt2->execute();
-
-function display_groups($stmt2) {
-	while($row = $stmt2->fetch()) {
-		echo '<br/>'.$row['group_name'];
+		echo '<input type="submit" value='.$row['course_code'].' onclick="display_groups(this.value)">';
 	}
 }
 
