@@ -4,8 +4,6 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<title>Dream Ticket | Profile Page</title>
-		<script type="text/javascript" src="xmlhttp.js"></script>
-		<script type="text/javascript" src="login_signup.js"></script>
 	</head>
 	<body>
 		<div class="body">
@@ -21,5 +19,7 @@
 			
 			<div id="groups"></div>
 		</div>
+		<script type="text/javascript" src="xmlhttp.js"></script>
+		<script type="text/javascript" src="login_signup.js"></script>
 	</body>
 </html>

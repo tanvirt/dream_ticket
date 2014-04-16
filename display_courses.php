@@ -2,7 +2,7 @@
 
 session_start();
 
-if(!isset($_SESSION['username'])) 
+if(!isset($_SESSION['username']))
 	die('Please log in to access your profile page<br/>'."<a href='login.html'>Click here</a> to log in");
 
 $db = json_decode(file_get_contents("../db.json"));
@@ -19,8 +19,15 @@ $stmt->bindParam(':username', $username);
 $stmt->execute();
 
 function display_courses($stmt) {
-	while($row = $stmt->fetch()) {
-		echo '<input type="submit" value='.$row['course_code'].' onclick="display_groups(this.value)">';
+	if(!($row = $stmt->fetch())) {
+		echo '<br/>No courses added. '."<a href='add_courses.php'>".'Click here</a> to add a course';
+		return;
+	}
+	else {
+		echo '<br/><input type="button" value='.$row['course_code'].' onclick="display_groups(this.value)">';
+		while($row = $stmt->fetch()) {
+			echo '<input type="button" value='.$row['course_code'].' onclick="display_groups(this.value)">';
+		}
 	}
 }
 

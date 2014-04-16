@@ -21,8 +21,14 @@ $stmt->bindParam(':username', $username);
 $stmt->bindParam(':course_code', $course_code);
 $stmt->execute();
 
-while($row = $stmt->fetch()) {
-	echo '<input type="button" value='.$row['group_name'].'>';
+if(!($row = $stmt->fetch())) {
+	echo '<br/>No groups added. '."<a href='add_groups.php'>".'Click here</a> to add a group';
+}
+else {
+	echo '<br/><input type="button" value='.$row['group_name'].'>';
+	while($row = $stmt->fetch()) {
+		echo '<input type="button" value='.$row['group_name'].'>';
+	}
 }
 
 $dbh = null;
