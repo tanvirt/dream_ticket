@@ -7,13 +7,14 @@
 	</head>
 	<body>
 		<div class="body">
+			<h1>Dream Ticket</h1>
 			Hello <?php echo $username; ?>! <br/>
 			
 			<a href="logout.php">Logout</a>
 			
 			<div class="form>
 				<form action="">
-					<?php display_courses($stmt) ?>
+					<?php display_user_courses($stmt) ?>
 				</form>
 			</div>
 			

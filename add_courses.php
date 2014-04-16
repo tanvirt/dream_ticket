@@ -10,30 +10,35 @@ $dbh = new PDO('pgsql:host='.$db->{'host'}.';port='.$db->{'port'}.';dbname='.$db
 	or die('Could not connect to database');
 
 $username = $_SESSION['username'];
-$course_code = $_GET['course_code'];
 
-$query = 'SELECT group_name
-			FROM groups NATURAL JOIN user_groups
-			WHERE username = :username
-				AND course_code = :course_code';
+$query = 'SELECT course_code, title
+			FROM courses
+			WHERE course_code 
+				NOT IN(SELECT course_code
+						FROM user_courses
+						WHERE username = :username)
+			ORDER BY course_code, title ASC';
 $stmt = $dbh->prepare($query);
 $stmt->bindParam(':username', $username);
-$stmt->bindParam(':course_code', $course_code);
 $stmt->execute();
 
-$add_group = 	'<form action="groups.php">
-					<input type="button" value="Add Group">
-				</form>';
-
-if(!($row = $stmt->fetch())) {
-	echo '<br/>'.$add_group;
-}
-else {
-	echo '<br/><input type="button" value='.$row['group_name'].'>';
+function display_all_courses($stmt) {
+	$table = '<table>
+				<tr> 	
+					<th> Course Code </th>
+					<th> Course Title </th>
+					<th></th>
+				</tr>';
 	while($row = $stmt->fetch()) {
-		echo '<br/><input type="button" value='.$row['group_name'].'>';
+		$table .= '
+			<tr>
+				<td>'.$row['course_code'].'</td>
+				<td>'.$row['title'].'</td>
+				<td><input type="button" value="Add"></td>
+			</tr>';
 	}
-	echo '<br/>'.$add_group;
+	$table .= '</table>';
+	echo $table;
 }
 
 $dbh = null;

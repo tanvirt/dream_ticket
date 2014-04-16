@@ -22,7 +22,7 @@ $password_hash = $row['password_hash'];
 
 function output_success($username) {
 	echo 	"Welcome $username!<br/><br/>";
-	echo	"<a href='profile_page.php'>Access your profile</a>";
+	echo	"<a href='profile.php'>Access your profile</a>";
 }
 
 if($user && password_verify($password, $password_hash)) {

@@ -1,6 +1,6 @@
 function check_user(value) {
 	if (value == "") {
-		document.getElementById("username_response").innerHTML = "";
+		document.getElementById("username_response").innerHTML="";
 		return;
 	}
 	respond_in("username_response");
