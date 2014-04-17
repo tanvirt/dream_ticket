@@ -19,18 +19,8 @@ $stmt->bindParam(':username', $username);
 $stmt->execute();
 
 function display_user_courses($stmt) {
-	if(!($row = $stmt->fetch())) {
-		echo '<br/>No courses added. '."<a href='courses.php'>".'Click here</a> to add a course';
-		return;
-	}
-	else {
-		echo '<br/><input type="button" value='.$row['course_code'].' onclick="display_groups(this.value)">';
-		while($row = $stmt->fetch()) {
-			echo '<br/><input type="button" value='.$row['course_code'].' onclick="display_groups(this.value)">';
-		}
-		echo '<form action="courses.php">';
-			echo '<input type="submit" value="Add Course">';
-		echo '</form>';
+	while($row = $stmt->fetch()) {
+		echo '<input type="button" value='.$row['course_code'].' onclick="display_groups(this.value)"><br/>';
 	}
 }
 

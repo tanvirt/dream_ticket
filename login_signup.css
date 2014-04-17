@@ -3,7 +3,34 @@ span {
 }
 
 .body {
-	text-align: center;
+	text-align:center;
+}
+
+.wrapper {
+	position: relative;
+	min-width: 800px;
+	max-width: 1000px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.leftCol {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 250px;
+}
+
+.rightCol {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 250px;
+}
+
+.middleCol {
+	position: relative;
+	margin-left: 275px;
+	min-width: 250px;
+	max-width: 450px;
 }

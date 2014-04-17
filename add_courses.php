@@ -13,22 +13,18 @@ $username = $_SESSION['username'];
 
 $query = 'SELECT course_code, title
 			FROM courses
-			WHERE course_code 
-				NOT IN(SELECT course_code
-						FROM user_courses
-						WHERE username = :username)
 			ORDER BY course_code, title ASC';
 $stmt = $dbh->prepare($query);
-$stmt->bindParam(':username', $username);
 $stmt->execute();
 
-function display_all_courses($stmt) {
-	$table = '<table>
-				<tr> 	
-					<th> Course Code </th>
-					<th> Course Title </th>
-					<th></th>
-				</tr>';
+$table = '<table>
+			<tr>
+				<th>Course Code</th>
+				<th>Course Title</th>
+				<th></th>
+			</tr>';
+
+function display_all_courses($stmt, $table) {
 	while($row = $stmt->fetch()) {
 		$table .= '
 			<tr>
