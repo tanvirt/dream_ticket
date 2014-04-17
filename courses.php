@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php require('add_courses.php'); ?>
+<?php require('display_courses.php'); ?>
 <html>
 	<head>
 		<meta charset="UTF-8">
