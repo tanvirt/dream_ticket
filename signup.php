@@ -23,11 +23,6 @@ function is_valid_input($user_exists, $username, $password1, $password2, $first_
 	return strlen($username) < 61 && strlen($password1) < 61 && strlen($first_name) < 61 && strlen($last_name) < 61 && !$user_exists && $password1 == $password2 && ctype_alpha($first_name . $last_name);
 }
 
-function output_success() {
-	echo	'Sign up was successful!<br/><br/>';
-	echo	"<a href='login.html'>Log In</a>";
-}
-
 function output_errors($user_exists, $username, $password1, $password2, $first_name, $last_name) {
 	$limit = 'cannot exceed 60 characters';
 	if(strlen($username) > 60)
@@ -58,7 +53,7 @@ if(is_valid_input($user_exists, $username, $password1, $password2, $first_name, 
 	$stmt->bindParam(':last_name', $last_name);
 	$stmt->execute();
 	
-	output_success();
+	echo 'Sign up was successful!';
 }
 else {
 	output_errors($user_exists, $username, $password1, $password2, $first_name, $last_name);

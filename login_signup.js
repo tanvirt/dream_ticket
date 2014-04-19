@@ -40,6 +40,7 @@ function create_course(course_code, title) {
 	xmlhttp.open("GET", "add_courses.php", true);
 	xmlhttp.send();
 }
+
 /*
 function find_course(course_code) {
 	respond_in("find_response");
