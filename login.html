@@ -6,21 +6,23 @@
 		<link rel="stylesheet" type="text/css" href="login_signup.css" />
 	</head>
 	<body>
+		<div class="header"><div><br/><br/><br/>
 		<div class="body">
-			<h1>Dream Ticket</h1>
+			<img src="csc.png">
 			<div class="form">
+				<br/>
 				<form action="" onsubmit="check_login_validity(this.username.value, this.password.value); return false;">
-					<input type="text" name="username" required placeholder="Username" autofocus onfocus="document.getElementById('login_response').style.display='none'"/><br/>
-					<input type="password" name="password" required placeholder="Password" autocomplete="off" onfocus="document.getElementById('login_response').style.display='none'"/><br/>
+					<input class="text" type="text" name="username" required placeholder="Username" autofocus onfocus="document.getElementById('login_response').style.display='none'"/><br/>
+					<input class="text" type="password" name="password" required placeholder="Password" autocomplete="off" onfocus="document.getElementById('login_response').style.display='none'"/><br/>
 					<br/>
-					<input type="submit" value="Log In" onclick="document.getElementById('login_response').style.display='block'"/>
+					<input class="button" type="submit" value="Log In" onclick="document.getElementById('login_response').style.display='block'"/>
 				</form>
 				<form action="signup.html">
-					<input type="submit" value="Sign Up"/>
+					<input class="button" type="submit" value="Sign Up"/>
 				</form>
 				<br/>
 			</div>
-			<div id="login_response"></div>
+			<div class="response" id="login_response"></div>
 		</div>
 		<script type="text/javascript" src="xmlhttp.js"></script>
 		<script type="text/javascript" src="login_signup.js"></script>
