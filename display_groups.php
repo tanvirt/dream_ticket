@@ -10,15 +10,12 @@ $dbh = new PDO('pgsql:host='.$db->{'host'}.';port='.$db->{'port'}.';dbname='.$db
 	or die('Could not connect to database');
 
 $username = $_SESSION['username'];
-$course_code = $_GET['course_code'];
 
 $query = 'SELECT group_name
-			FROM groups NATURAL JOIN user_groups
-			WHERE username = :username
-				AND course_code = :course_code';
+			FROM user_groups
+			WHERE username = :username';
 $stmt = $dbh->prepare($query);
 $stmt->bindParam(':username', $username);
-$stmt->bindParam(':course_code', $course_code);
 $stmt->execute();
 
 while($row = $stmt->fetch()) {

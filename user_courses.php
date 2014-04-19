@@ -18,10 +18,8 @@ $stmt = $dbh->prepare($query);
 $stmt->bindParam(':username', $username);
 $stmt->execute();
 
-function display_user_courses($stmt) {
-	while($row = $stmt->fetch()) {
-		echo '<input type="button" value='.$row['course_code'].' onclick="display_groups(this.value)"><br/>';
-	}
+while($row = $stmt->fetch()) {
+	echo '<input type="button" value='.$row['course_code'].'><br/>';
 }
 
 $dbh = null;

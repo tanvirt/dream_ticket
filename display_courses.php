@@ -10,7 +10,6 @@ $dbh = new PDO('pgsql:host='.$db->{'host'}.';port='.$db->{'port'}.';dbname='.$db
 	or die('Could not connect to database');
 
 $username = $_SESSION['username'];
-//$val = $_GET['val'];
 
 $query = 'SELECT course_code, title
 			FROM courses
