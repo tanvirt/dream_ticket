@@ -21,10 +21,3 @@ function check_login_validity(username, password) {
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("username="+username+"&password="+password);
 }
-/*
-function create_course(course_code, title) {
-	respond_in("create_response");
-	xmlhttp.open("GET", "add_courses.php", true);
-	xmlhttp.send();
-}
-*/
