@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<?php require('display_courses.php'); ?>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>Dream Ticket | Courses</title>
 	</head>
-	<body>
+	<body onload="display_courses()">
 		<div class="body">
 			<h1>Dream Ticket</h1>
 			<a href="logout.php">Logout</a>
 			
 			<br/><br/>
 			Create a new course
-			<form action="POST"><!-- onsubmit="create_course(this.course_code.value, this.title.value)"> -->
+			<form action="" onsubmit="create_course(this.course_code.value, this.title.value)">
 				<input type="text" name="course_code" placeholder="Course Code"/>
 				<input type="text" name="title" placeholder="Course Title"/>
 				<input type="submit" value="Create Course"/>
@@ -21,7 +20,7 @@
 			
 			<br/>
 			Find a course
-			<form action="POST"><!-- onsubmit="find_course(this.course_code.value)"> -->
+			<form action="" onsubmit="find_course(this.course_code.value)">
 				<input type="text" name="course_code" placeholder="Course Code"/>
 				<input type="submit" value="Find Course"/>
 				<div id="find_response"></div>
@@ -29,8 +28,7 @@
 			
 			<br/>
 			Available courses
-			<form action="">
-				<?php display_all_courses($stmt, $table) ?>
+			<form id="course_display" action="">
 			</form>
 		<div>
 		<script type="text/javascript" src="xmlhttp.js"></script>

@@ -29,6 +29,18 @@ function display_groups(course_code) {
 	xmlhttp.send();
 }
 
+function display_courses() {
+	respond_in("course_display");
+	xmlhttp.open("GET", "display_courses.php", true);
+	xmlhttp.send();
+}
+
+function create_course(course_code, title) {
+	respond_in("create_response");
+	xmlhttp.open("GET", "add_courses.php", true);
+	xmlhttp.send();
+}
+/*
 function find_course(course_code) {
 	respond_in("find_response");
 }
@@ -36,3 +48,4 @@ function find_course(course_code) {
 function create_course(course_code, course_title) {
 	respond_in("create_response");
 }
+*/
