@@ -1,6 +1,6 @@
 function display_courses() {
 	respond_in("course_response");
-	xmlhttp.open("GET", "user_courses.php", true);
+	xmlhttp.open("GET", "display_courses.php", true);
 	xmlhttp.send();
 }
 

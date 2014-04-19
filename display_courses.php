@@ -11,30 +11,15 @@ $dbh = new PDO('pgsql:host='.$db->{'host'}.';port='.$db->{'port'}.';dbname='.$db
 
 $username = $_SESSION['username'];
 
-$query = 'SELECT course_code, title
-			FROM courses
-			ORDER BY course_code, title ASC';
+$query = 'SELECT course_code
+			FROM user_courses
+			WHERE username = :username';
 $stmt = $dbh->prepare($query);
+$stmt->bindParam(':username', $username);
 $stmt->execute();
 
-$table = '<table>
-			<tr>
-				<th>Course Code</th>
-				<th>Course Title</th>
-				<th></th>
-			</tr>';
-
-function display_all_courses($stmt, $table) {
-	while($row = $stmt->fetch()) {
-		$table .= '
-			<tr>
-				<td>'.$row['course_code'].'</td>
-				<td>'.$row['title'].'</td>
-				<td><input type="button" value="Add"></td>
-			</tr>';
-	}
-	$table .= '</table>';
-	echo $table;
+while($row = $stmt->fetch()) {
+	echo '<input type="button" value='.$row['course_code'].'><br/>';
 }
 
 $dbh = null;
