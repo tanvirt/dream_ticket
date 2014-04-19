@@ -90,6 +90,21 @@ img {
 	outline: none;
 }
 
+.button3 {
+	background-color: hsl(210, 75%, 55%);
+	border: 1px solid hsl(210, 80%, 60%);
+	color: white;
+	font-family: Arial;
+	font-size: 0.95em;
+	font-weight: bold;
+	min-height: 2em;
+	line-height: 25px;
+	width: 15em;
+	text-align: left;
+	text-shadow: 1px 1px 0px gray;
+	outline: none;
+}
+
 .button4 {
 	background-color: hsl(210, 75%, 45%);
 	border: 1px solid hsl(210, 80%, 60%);
@@ -109,6 +124,27 @@ img {
 	background-color: hsl(30, 100%, 50%);
 }
 .button4:active {
+	position: relative;
+	top: 1px;
+}
+
+.button6 {
+	background-color: hsl(210, 75%, 55%);
+	border: 1px solid hsl(210, 80%, 60%);
+	color: white;
+	font-family: Arial;
+	font-size: 0.95em;
+	min-height: 1em;
+	line-height: 25px;
+	width: 4em;
+	text-align: center;
+	text-shadow: 1px 1px 0px gray;
+	outline: none;
+}
+.button6:hover {
+	background-color: hsl(30, 100%, 50%);
+}
+.button6:active {
 	position: relative;
 	top: 1px;
 }
