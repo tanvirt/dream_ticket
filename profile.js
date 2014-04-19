@@ -4,9 +4,9 @@ function display_courses() {
 	xmlhttp.send();
 }
 
-function display_groups() {
+function display_groups(course_code) {
 	respond_in("group_response");
-	xmlhttp.open("GET", "display_groups.php", true);
+	xmlhttp.open("GET", "display_groups.php?course_code="+course_code, true);
 	xmlhttp.send();
 }
 
@@ -28,20 +28,23 @@ course_button.onclick = function() {
     }
 };
 
+var group_button = document.getElementById("group_button");
+
+function change_group_button(course_code) {
+	var group_button = document.getElementById('group_button');
+	group_button.value = 'Groups | ' + course_code;
+}
+
+/*
 var group_button = document.getElementById('group_button');
-var count2 = 1
 
 group_button.onclick = function() {
     var div = document.getElementById('group_response');
-    if (div.style.display !== 'block' && count2 == 1) {
-        div.style.display = 'block';
-		display_groups();
-		count2 += 1;
-    }
-	else if(div.style.display !== 'block') {
-		div.style.display = 'block';
-	}
-    else {
+    if (div.style.display !== 'none') {
         div.style.display = 'none';
     }
+    else {
+        div.style.display = 'block';
+    }
 };
+*/

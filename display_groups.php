@@ -10,16 +10,25 @@ $dbh = new PDO('pgsql:host='.$db->{'host'}.';port='.$db->{'port'}.';dbname='.$db
 	or die('Could not connect to database');
 
 $username = $_SESSION['username'];
+$course_code = $_GET['course_code'];
 
 $query = 'SELECT group_name
-			FROM user_groups
-			WHERE username = :username';
+			FROM groups NATURAL JOIN user_groups
+			WHERE username = :username
+				AND course_code = :course_code';
 $stmt = $dbh->prepare($query);
 $stmt->bindParam(':username', $username);
+$stmt->bindParam(':course_code', $course_code);
 $stmt->execute();
+$row = $stmt->fetch();
 
-while($row = $stmt->fetch()) {
-	echo '<input type="button" value='.$row['group_name'].'><br/>';
+if($row) {
+	echo '<input class="button2" type="button" value='.$row['group_name'].'><br/>';
+	while($row = $stmt->fetch()) {
+		echo '<input class="button2" type="button" value='.$row['group_name'].'><br/>';
+	}
 }
+else
+	echo '<input class="button2" type="button" value="None"><br/>';
 
 $dbh = null;

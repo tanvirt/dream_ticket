@@ -19,7 +19,8 @@ $stmt->bindParam(':username', $username);
 $stmt->execute();
 
 while($row = $stmt->fetch()) {
-	echo '<input type="button" value='.$row['course_code'].'><br/>';
+	echo '<input class="button2" type="button" value='.$row['course_code'].' 
+			onclick="display_groups(\''.$row['course_code'].'\'); change_group_button(\''.$row['course_code'].'\')"><br/>';
 }
 
 $dbh = null;
