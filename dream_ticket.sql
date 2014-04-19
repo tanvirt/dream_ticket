@@ -21,7 +21,8 @@ CREATE TABLE courses (
 CREATE TABLE groups (
 	group_name VARCHAR(60) PRIMARY KEY,
 	description TEXT DEFAULT 'None',
-	course_code CHAR(7) REFERENCES courses(course_code)
+	course_code CHAR(7) REFERENCES courses(course_code),
+	owner VARCHAR(60) REFERENCES accounts(username)
 );
 /*
 DROP TABLE IF EXISTS instructors CASCADE;
@@ -63,6 +64,11 @@ CREATE TABLE group_discussions (
 	time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+DELETE FROM courses CASCADE;
+DELETE FROM groups CASCADE;
+DELETE FROM user_courses;
+DELETE FROM user_groups;
+
 INSERT INTO courses (course_code, title)
 VALUES
 ('CIS4301', 'Information and Database Systems 1'),
@@ -71,23 +77,32 @@ VALUES
 ('EGN4930', 'Sales Seminar'),
 ('MAS3114', 'Computational Linear Algebra');
 
-INSERT INTO groups (group_name, course_code)
+INSERT INTO groups (group_name, course_code, owner)
 VALUES
-('Databuds', 'CIS4301'),
-('Comporgo', 'CDA3101'),
-('Cops', 'COP3530'),
-('Structs', 'COP3530'),
-('Salespeople', 'EGN4930'),
-('Linearites', 'MAS3114');
+('Databuds', 'CIS4301', 'tanvirt'),
+('Comporgo', 'CDA3101', 'tanvirt'),
+('Cops', 'COP3530', 'tanvirt'),
+('Structs', 'COP3530', 'cs_tim'),
+('Salespeople', 'EGN4930', 'cs_tim'),
+('Linearites', 'MAS3114', 'cs_tim');
 
 INSERT INTO user_courses (username, course_code)
 VALUES
 ('tanvirt', 'CIS4301'),
 ('tanvirt', 'CDA3101'),
-('tanvirt', 'COP3530');
+('tanvirt', 'COP3530'),
+('tanvirt', 'EGN4930'),
+('cs_tim', 'EGN4930'),
+('cs_tim', 'MAS3114'),
+('cs_tim', 'COP3530'),
+('cs_tim', 'CIS4301');
 
 INSERT INTO user_groups (username, group_name)
 VALUES
 ('tanvirt', 'Databuds'),
+('tanvirt', 'Comporgo'),
 ('tanvirt', 'Cops'),
-('tanvirt', 'Structs');
+('tanvirt', 'Structs'),
+('cs_tim', 'Salespeople'),
+('cs_tim', 'Structs'),
+('cs_tim', 'CIS4301');

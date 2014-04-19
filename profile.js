@@ -32,9 +32,8 @@ var group_button = document.getElementById("group_button");
 
 function change_group_button(course_code) {
 	var group_button = document.getElementById('group_button');
-	group_button.value = 'Groups | ' + course_code;
+	group_button.value = 'My Groups | ' + course_code;
 }
-
 /*
 var group_button = document.getElementById('group_button');
 
