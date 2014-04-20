@@ -8,11 +8,11 @@ function check_user(value) {
 	xmlhttp.send();
 }
 
-function check_signup_validity(username, password1, password2, first_name, last_name) {
+function check_signup_validity(username, password1, password2) {
 	respond_in("signup_response");
 	xmlhttp.open("POST","signup.php",true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send("username="+username+"&password1="+password1+"&password2="+password2+"&first_name="+first_name+"&last_name="+last_name);
+	xmlhttp.send("username="+username+"&password1="+password1+"&password2="+password2);
 }
 
 function check_login_validity(username, password) {

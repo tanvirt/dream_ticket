@@ -1,17 +1,15 @@
-/*
+
 DROP TABLE IF EXISTS accounts CASCADE;
 DROP TABLE IF EXISTS courses CASCADE;
 DROP TABLE IF EXISTS groups CASCADE;
 DROP TABLE IF EXISTS user_courses;
 DROP TABLE IF EXISTS user_groups;
-DROP TABLE IF EXISTS course_discussions;
-DROP TABLE IF EXISTS group_discussions;
-*/
+DROP TABLE IF EXISTS course_messages;
+DROP TABLE IF EXISTS group_messages;
+
 CREATE TABLE accounts (
 	username VARCHAR(60) PRIMARY KEY,
-	password_hash CHAR(60) NOT NULL,
-	first_name VARCHAR(60) NOT NULL,
-	last_name VARCHAR(60) NOT NULL
+	password_hash CHAR(60) NOT NULL
 );
 
 CREATE TABLE courses (
@@ -51,7 +49,7 @@ CREATE TABLE group_messages (
 	message TEXT NOT NULL,
 	time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-/*
+
 DROP INDEX IF EXISTS acc_user_idx;
 DROP INDEX IF EXISTS crs_code_idx;
 DROP INDEX IF EXISTS crs_title_idx;
@@ -62,7 +60,7 @@ DROP INDEX IF EXISTS u_crs_user_idx;
 DROP INDEX IF EXISTS u_crs_code_idx;
 DROP INDEX IF EXISTS u_grp_user_idx;
 DROP INDEX IF EXISTS u_grp_name_idx;
-*/
+
 CREATE INDEX acc_user_idx ON accounts(username);
 
 CREATE INDEX crs_code_idx ON courses(course_code);
@@ -78,13 +76,13 @@ CREATE INDEX u_crs_code_idx ON user_courses(course_code);
 CREATE INDEX u_grp_user_idx ON user_groups(username);
 CREATE INDEX u_grp_name_idx ON user_groups(group_name);
 
---DROP VIEW IF EXISTS course_groups;
+DROP VIEW IF EXISTS course_groups;
 
 CREATE VIEW course_groups AS
 SELECT username, course_code, group_name, description
 FROM groups NATURAL JOIN user_groups;
 
---DROP FUNCTION IF EXISTS create_add_func();
+DROP FUNCTION IF EXISTS create_add_func();
 
 CREATE OR REPLACE FUNCTION create_add_func() RETURNS TRIGGER AS $$
 	BEGIN
@@ -94,7 +92,7 @@ CREATE OR REPLACE FUNCTION create_add_func() RETURNS TRIGGER AS $$
 	END;
 $$ LANGUAGE plpgsql;
 
---DROP TRIGGER IF EXISTS create_add_trigger ON course_groups;
+DROP TRIGGER IF EXISTS create_add_trigger ON course_groups;
 
 CREATE TRIGGER create_add_trigger
 INSTEAD OF INSERT ON course_groups

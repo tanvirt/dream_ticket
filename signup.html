@@ -10,19 +10,17 @@
 		<div class="body">
 			<img src="dreamticket.jpg">
 			<div class="form">
-				<form action="" onsubmit="check_signup_validity(this.username.value, this.password1.value, this.password2.value, this.first_name.value, this.last_name.value); return false;">
+				<form action="" onsubmit="check_signup_validity(this.username.value, this.password1.value, this.password2.value); return false;">
 					<span id="username_response"></span><br/>
 					<input class="text" type="text" name="username" required placeholder="Username" autofocus autocomplete="off" onkeyup="check_user(this.value)" onfocus="document.getElementById('signup_response').style.display='none'"/><br/>
 					<input class="text" type="password" name="password1" required placeholder="Password" autocomplete="off" onfocus="document.getElementById('signup_response').style.display='none'"/><br/>
 					<input class="text" type="password" name="password2" required placeholder="Re-Enter Password"autocomplete="off" onfocus="document.getElementById('signup_response').style.display='none'"/><br/>
 					<br/>
-					<input class="text" type="text" name="first_name" required placeholder="First Name" autocomplete="off" onfocus="document.getElementById('signup_response').style.display='none'"/><br/>
-					<input class="text" type="text" name="last_name" required placeholder="Last Name" autocomplete="off" onfocus="document.getElementById('signup_response').style.display='none'"/><br/>
-					<br/>
 					<input class="button" type="submit" value="Sign Up" onclick="document.getElementById('signup_response').style.display='block'"/><br/>
 					<br/>
 					<a href='login.html'>Back to Login</a>
 				</form>
+				<br/>
 			</div>
 			<div class="response" id="signup_response"></div>
 		</div>
