@@ -2,28 +2,42 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8"/>
-		<title>Dream Ticket | Profile Page</title>
+		<title>Dream Ticket | Profile</title>
 		<link rel="stylesheet" type="text/css" href="login_signup.css"/>
 	</head>
 	<body>
 		<div class="body">
-			<span class="profile">Profile</span>
-			
-			<span class="logout"><a href="logout.php">Log Out</a></span>
+			<a class="profile" href="profile.html">Profile</a></span>
+			<a class="options_button" href="options.html">Options</a>
+			<br/>
+			<a class="logout" href="logout.php">Log Out</a>
 			
 			<br/><br/>
 			<div class="form2">
-				<form action="projects.html">
+				<form action="courses.html">
 					<input class="button4" type="submit" value="Add Course">
 				</form>
 				
-				<button id="course_button" class="button3" type="button">Courses</button>
+				<form action="groups.html">
+					<input class="button4" type="submit" value="Add Group">
+				</form>
+				
+				<input id="course_button" class="button4" type="button" value="My Courses"/>
 				<div id="course_response"></div>
 				
-				<button id="group_button" class="button3" type="button">Groups</button>
+				<input id="group_button" class="button4" type="button" value="My Groups"/>
 				<div id="group_response"></div>
 			</div>
 			
+			<form id="message" action="" onsubmit="send_message(this.message.value, this.type.value, this.val.value); return false;">
+				<textarea id="send-message" type="text" name="message" required placeholder="   Write a message"></textarea>
+				<input id="hidden_type" type="hidden" name="type" value=""/>
+				<input id="hidden_val" type="hidden" name="val" value=""/>
+				<input id="send_button" class="button" type="submit" value="Send"/>
+				<input id="val_button" class="button10" type="button" value="">
+				<br/><br/>
+			</form>
+			<br/>
 			<div id="messages">
 				<br/><br/>
 				Make a Selection

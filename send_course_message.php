@@ -10,18 +10,15 @@ $dbh = new PDO('pgsql:host='.$db->{'host'}.';port='.$db->{'port'}.';dbname='.$db
 	or die('Could not connect to database');
 
 $username = $_SESSION['username'];
+$course_code = $_GET['value'];
+$message = htmlspecialchars($_GET['message']);
 
-$query = 'SELECT course_code
-			FROM user_courses
-			WHERE username = :username';
+$query = 'INSERT INTO course_messages (username, course_code, message)
+			VALUES (:username, :course_code, :message)';
 $stmt = $dbh->prepare($query);
 $stmt->bindParam(':username', $username);
+$stmt->bindParam(':course_code', $course_code);
+$stmt->bindParam(':message', $message);
 $stmt->execute();
-
-function display_user_courses($stmt) {
-	while($row = $stmt->fetch()) {
-		echo '<input type="button" value='.$row['course_code'].' onclick="display_groups(this.value)"><br/>';
-	}
-}
 
 $dbh = null;

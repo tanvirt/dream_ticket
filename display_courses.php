@@ -10,32 +10,36 @@ $dbh = new PDO('pgsql:host='.$db->{'host'}.';port='.$db->{'port'}.';dbname='.$db
 	or die('Could not connect to database');
 
 $username = $_SESSION['username'];
-//$val = $_GET['val'];
 
-$query = 'SELECT course_code, title
-			FROM courses
-			ORDER BY course_code, title ASC';
+$query = 'SELECT course_code
+			FROM user_courses
+			WHERE username = :username';
 $stmt = $dbh->prepare($query);
+$stmt->bindParam(':username', $username);
 $stmt->execute();
+$row = $stmt->fetch();
 
-$table = '<table>
-			<tr>
-				<th>Course Code</th>
-				<th>Course Title</th>
-				<th></th>
-			</tr>';
-
-function display_all_courses($stmt, $table) {
+if($row) {
+	echo '<input class="button2" type="button" value=\''.$row['course_code'].'\' 
+				onclick="display_groups(\''.$row['course_code'].'\'); 
+				document.getElementById(\'group_response\').style.display=\'block\';
+				document.getElementById(\'hidden_type\').value=\'course\';
+				document.getElementById(\'hidden_val\').value=\''.$row['course_code'].'\';
+				document.getElementById(\'val_button\').value=\''.$row['course_code'].'\';
+				change_group_button(\''.$row['course_code'].'\')"
+				onfocus="display_course_messages(\''.$row['course_code'].'\')"><br/>';
 	while($row = $stmt->fetch()) {
-		$table .= '
-			<tr>
-				<td>'.$row['course_code'].'</td>
-				<td>'.$row['title'].'</td>
-				<td><input type="button" value="Add"></td>
-			</tr>';
+		echo '<input class="button2" type="button" value=\''.$row['course_code'].'\'
+				onclick="display_groups(\''.$row['course_code'].'\'); 
+				document.getElementById(\'group_response\').style.display=\'block\';
+				document.getElementById(\'hidden_type\').value=\'course\';
+				document.getElementById(\'hidden_val\').value=\''.$row['course_code'].'\';
+				document.getElementById(\'val_button\').value=\''.$row['course_code'].'\';
+				change_group_button(\''.$row['course_code'].'\')"
+				onfocus="display_course_messages(\''.$row['course_code'].'\')"><br/>';
 	}
-	$table .= '</table>';
-	echo $table;
 }
+else
+	echo '<input class="button5" type="button" value="None"><br/>';
 
 $dbh = null;

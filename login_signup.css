@@ -1,8 +1,15 @@
 img {
 	max-width: 80%;
 	margin-left: 10%;
-	padding-top: 1em;
-	padding-bottom: 1em;
+}
+
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+}
+
+tr:nth-child(2n) {
+  background-color: hsl(180, 50%, 85%);
 }
 
 .body {
@@ -43,6 +50,10 @@ img {
 	float: right;
 }
 
+.options_button {
+	float: right;
+}
+
 .form {
 	text-align: center;
 	background-color: hsl(180, 50%, 85%);
@@ -52,6 +63,50 @@ img {
 	background-color: hsl(210, 75%, 55%);
 	width: 14.25em;
 	float: left;
+}
+
+.message-box {
+	border: 1px solid hsl(180, 50%, 85%);
+	padding: 1em;
+}
+
+#send-message {
+	height: 5em;
+	max-height: 5em;
+	width: 68.4%;
+	max-width: 68.4%;
+	float: right;
+}
+
+#send_button {
+	float: right;
+}
+
+#messages {
+	border: 1px solid hsl(210, 75%, 55%);
+	max-height: 25em;
+	width: 65%;
+	float: right;
+	font-family: "Myriad Pro","Segoe UI",Helvetica, Arial, sans-serif;
+	overflow: auto;
+	text-align: left;
+	padding: 1em;
+}
+
+#options {
+	border: 1px solid hsl(210, 75%, 55%);
+	max-height: 25em;
+	width: 65%;
+	float: right;
+	font-family: "Myriad Pro","Segoe UI",Helvetica, Arial, sans-serif;
+	overflow: auto;
+	text-align: left;
+	padding: 1em;
+}
+
+.description {
+	height: 10em;
+	width: 80%;
 }
 
 .button {
@@ -66,11 +121,33 @@ img {
 	text-align: center;
 	text-shadow: 1px 1px 0px gray;
 	outline: none;
+	word-wrap: break-word;
 }
 .button:hover {
 	background-color: hsl(30, 100%, 50%);
 }
 .button:active {
+	position: relative;
+	top: 1px;
+}
+
+.button2 {
+	background-color: hsl(210, 75%, 55%);
+	border: 1px solid hsl(210, 80%, 60%);
+	color: white;
+	font-family: Arial;
+	font-size: 0.95em;
+	min-height: 2em;
+	line-height: 25px;
+	width: 15em;
+	text-align: left;
+	text-shadow: 1px 1px 0px gray;
+	word-wrap: break-word;
+}
+.button2:hover {
+	background-color: hsl(30, 100%, 50%);
+}
+.button2:active {
 	position: relative;
 	top: 1px;
 }
@@ -88,6 +165,7 @@ img {
 	text-align: left;
 	text-shadow: 1px 1px 0px gray;
 	outline: none;
+	word-wrap: break-word;
 }
 
 .button4 {
@@ -104,11 +182,124 @@ img {
 	text-shadow: 1px 1px 0px gray;
 	margin-top: -1px;
 	outline: none;
+	word-wrap: break-word;
 }
 .button4:hover {
 	background-color: hsl(30, 100%, 50%);
 }
 .button4:active {
+	position: relative;
+	top: 1px;
+}
+
+.button5 {
+	background-color: hsl(210, 75%, 55%);
+	border: 1px solid hsl(210, 80%, 60%);
+	color: white;
+	font-family: Arial;
+	font-size: 0.95em;
+	min-height: 2em;
+	line-height: 25px;
+	width: 15em;
+	text-align: left;
+	text-shadow: 1px 1px 0px gray;
+	outline: none;
+	word-wrap: break-word;
+}
+
+.button6 {
+	background-color: hsl(210, 75%, 55%);
+	border: 1px solid hsl(210, 80%, 60%);
+	color: white;
+	font-family: Arial;
+	font-size: 0.95em;
+	min-height: 1em;
+	line-height: 25px;
+	width: 4em;
+	text-align: center;
+	text-shadow: 1px 1px 0px gray;
+	outline: none;
+	word-wrap: break-word;
+}
+.button6:hover {
+	background-color: hsl(30, 100%, 50%);
+}
+.button6:active {
+	position: relative;
+	top: 1px;
+}
+
+.button8 {
+	background-color: hsl(210, 75%, 55%);
+	border: 1px solid hsl(210, 80%, 60%);
+	color: white;
+	font-family: Arial;
+	font-size: 0.95em;
+	font-weight: bold;
+	min-height: 2em;
+	line-height: 25px;
+	width: cover;
+	text-align: left;
+	text-shadow: 1px 1px 0px gray;
+	outline: none;
+	word-wrap: break-word;
+}
+
+.button9 {
+	background-color: hsl(210, 75%, 55%);
+	border: 1px solid hsl(210, 80%, 60%);
+	color: white;
+	font-family: Arial;
+	font-size: 0.95em;
+	min-height: 1em;
+	line-height: 25px;
+	width: 8em;
+	text-align: center;
+	text-shadow: 1px 1px 0px gray;
+	outline: none;
+	word-wrap: break-word;
+}
+.button9:hover {
+	background-color: hsl(30, 100%, 50%);
+}
+.button9:active {
+	position: relative;
+	top: 1px;
+}
+
+.button10 {
+	background-color: hsl(210, 75%, 55%);
+	border: 1px solid hsl(210, 80%, 60%);
+	color: white;
+	font-family: Arial;
+	font-size: 0.95em;
+	min-height: 2em;
+	line-height: 25px;
+	max-width: 68.4%;
+	text-align: left;
+	text-shadow: 1px 1px 0px gray;
+	outline: none;
+	float: right;
+	word-wrap: break-word;
+}
+
+.button11 {
+	background-color: hsl(210, 75%, 55%);
+	border: 1px solid hsl(210, 80%, 60%);
+	color: white;
+	font-family: Arial;
+	font-size: 0.95em;
+	min-height: 2em;
+	line-height: 25px;
+	width: 15em;
+	text-align: left;
+	text-shadow: 1px 1px 0px gray;
+	word-wrap: break-word;
+}
+.button11:hover {
+	background-color: red;
+}
+.button11:active {
 	position: relative;
 	top: 1px;
 }

@@ -13,16 +13,30 @@ $username = $_SESSION['username'];
 $course_code = $_GET['course_code'];
 
 $query = 'SELECT group_name
-			FROM groups NATURAL JOIN user_groups
+			FROM course_groups
 			WHERE username = :username
 				AND course_code = :course_code';
 $stmt = $dbh->prepare($query);
 $stmt->bindParam(':username', $username);
 $stmt->bindParam(':course_code', $course_code);
 $stmt->execute();
+$row = $stmt->fetch();
 
-while($row = $stmt->fetch()) {
-	echo '<input type="button" value='.$row['group_name'].'><br/>';
+if($row) {
+	echo '<input class="button2" type="button" value=\''.$row['group_name'].'\'
+			onclick="display_group_messages(\''.$row['group_name'].'\');
+			document.getElementById(\'hidden_type\').value=\'group\';
+			document.getElementById(\'val_button\').value=\''.$row['group_name'].'\';
+			document.getElementById(\'hidden_val\').value=\''.$row['group_name'].'\'"><br/>';
+	while($row = $stmt->fetch()) {
+		echo '<input class="button2" type="button" value=\''.$row['group_name'].'\'
+				onclick="display_group_messages(\''.$row['group_name'].'\');
+				document.getElementById(\'hidden_type\').value=\'group\';
+				document.getElementById(\'val_button\').value=\''.$row['group_name'].'\';
+				document.getElementById(\'hidden_val\').value=\''.$row['group_name'].'\'"><br/>';
+	}
 }
+else
+	echo '<input class="button5" type="button" value="None"><br/>';
 
 $dbh = null;
