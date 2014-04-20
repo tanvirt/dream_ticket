@@ -13,7 +13,7 @@ $username = $_SESSION['username'];
 $course_code = $_GET['course_code'];
 
 $query = 'SELECT group_name
-			FROM groups NATURAL JOIN user_groups
+			FROM course_groups
 			WHERE username = :username
 				AND course_code = :course_code';
 $stmt = $dbh->prepare($query);

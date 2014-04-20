@@ -77,6 +77,12 @@ CREATE INDEX u_crs_code_idx ON user_courses(course_code);
 
 CREATE INDEX u_grp_user_idx ON user_groups(username);
 CREATE INDEX u_grp_name_idx ON user_groups(group_name);
+
+--DROP VIEW course_groups;
+
+CREATE VIEW course_groups AS
+SELECT username, course_code, group_name
+FROM groups NATURAL JOIN user_groups;
 /*
 DELETE FROM courses CASCADE;
 DELETE FROM groups CASCADE;
