@@ -28,14 +28,12 @@ course_button.onclick = function() {
     }
 };
 
-var group_button = document.getElementById("group_button");
+var group_button = document.getElementById('group_button');
 
 function change_group_button(course_code) {
 	var group_button = document.getElementById('group_button');
 	group_button.value = 'My Groups | ' + course_code;
 }
-/*
-var group_button = document.getElementById('group_button');
 
 group_button.onclick = function() {
     var div = document.getElementById('group_response');
@@ -46,4 +44,3 @@ group_button.onclick = function() {
         div.style.display = 'block';
     }
 };
-*/

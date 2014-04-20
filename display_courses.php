@@ -17,10 +17,21 @@ $query = 'SELECT course_code
 $stmt = $dbh->prepare($query);
 $stmt->bindParam(':username', $username);
 $stmt->execute();
+$row = $stmt->fetch();
 
-while($row = $stmt->fetch()) {
+if($row) {
 	echo '<input class="button2" type="button" value='.$row['course_code'].' 
-			onclick="display_groups(\''.$row['course_code'].'\'); change_group_button(\''.$row['course_code'].'\')"><br/>';
+				onclick="display_groups(\''.$row['course_code'].'\'); 
+				document.getElementById(\'group_response\').style.display=\'block\';
+				change_group_button(\''.$row['course_code'].'\')"><br/>';
+	while($row = $stmt->fetch()) {
+		echo '<input class="button2" type="button" value='.$row['course_code'].' 
+				onclick="display_groups(\''.$row['course_code'].'\'); 
+				document.getElementById(\'group_response\').style.display=\'block\';
+				change_group_button(\''.$row['course_code'].'\')"><br/>';
+	}
 }
+else
+	echo '<input class="button2" type="button" value="None"><br/>';
 
 $dbh = null;
