@@ -1,3 +1,4 @@
+/*
 DROP TABLE IF EXISTS accounts CASCADE;
 DROP TABLE IF EXISTS courses CASCADE;
 DROP TABLE IF EXISTS groups CASCADE;
@@ -5,7 +6,7 @@ DROP TABLE IF EXISTS user_courses;
 DROP TABLE IF EXISTS user_groups;
 DROP TABLE IF EXISTS course_discussions;
 DROP TABLE IF EXISTS group_discussions;
-
+*/
 CREATE TABLE accounts (
 	username VARCHAR(60) PRIMARY KEY,
 	password_hash CHAR(60) NOT NULL,
@@ -24,12 +25,7 @@ CREATE TABLE groups (
 	course_code CHAR(7) REFERENCES courses(course_code),
 	owner VARCHAR(60) REFERENCES accounts(username)
 );
-/*
-DROP TABLE IF EXISTS instructors CASCADE;
-CREATE TABLE instructors (
-	name VARCHAR(60) PRIMARY KEY
-);
-*/
+
 CREATE TABLE user_courses (
 	username VARCHAR(60) REFERENCES accounts(username),
 	course_code CHAR(7) REFERENCES courses(course_code)
@@ -39,18 +35,11 @@ CREATE TABLE user_groups (
 	username VARCHAR(60) REFERENCES accounts(username),
 	group_name VARCHAR(60) REFERENCES groups(group_name)
 );
-/*
-DROP TABLE IF EXISTS instructor_courses;
-CREATE TABLE instructor_courses (
-	instructor_name VARCHAR(60) REFERENCES instructors(name),
-	course_code CHAR(7) REFERENCES courses(course_code)
-);
-*/
+
 CREATE TABLE course_discussions (
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(60) REFERENCES accounts(username),
 	course_code CHAR(7) REFERENCES courses(course_code),
-	--topic VARCHAR(60) NOT NULL,
 	post TEXT NOT NULL,
 	time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -59,11 +48,36 @@ CREATE TABLE group_discussions (
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(60) REFERENCES accounts(username),
 	group_name VARCHAR(60) REFERENCES groups(group_name),
-	--topic VARCHAR(60) NOT NULL,
 	post TEXT NOT NULL,
 	time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+/*
+DROP INDEX acc_user_idx;
+DROP INDEX crs_code_idx;
+DROP INDEX crs_title_idx;
+DROP INDEX grp_name_idx;
+DROP INDEX grp_code_idx;
+DROP INDEX grp_owner_idx;
+DROP INDEX u_crs_user_idx;
+DROP INDEX u_crs_code_idx;
+DROP INDEX u_grp_user_idx;
+DROP INDEX u_grp_name_idx;
+*/
+CREATE INDEX acc_user_idx ON accounts(username);
 
+CREATE INDEX crs_code_idx ON courses(course_code);
+CREATE INDEX crs_title_idx ON courses(title);
+
+CREATE INDEX grp_name_idx ON groups(group_name);
+CREATE INDEX grp_code_idx ON groups(course_code);
+CREATE INDEX grp_owner_idx ON groups(owner);
+
+CREATE INDEX u_crs_user_idx ON user_courses(username);
+CREATE INDEX u_crs_code_idx ON user_courses(course_code);
+
+CREATE INDEX u_grp_user_idx ON user_groups(username);
+CREATE INDEX u_grp_name_idx ON user_groups(group_name);
+/*
 DELETE FROM courses CASCADE;
 DELETE FROM groups CASCADE;
 DELETE FROM user_courses;
@@ -106,3 +120,4 @@ VALUES
 ('cs_tim', 'Salespeople'),
 ('cs_tim', 'Structs'),
 ('cs_tim', 'CIS4301');
+*/
