@@ -4,8 +4,8 @@ function display_all_groups() {
 	xmlhttp.send();
 }
 
-function add_course(course_code) {
-	console.log('It works');
+function add_group(course_code) {
+	
 }
 
 var display_button = document.getElementById('display_button');

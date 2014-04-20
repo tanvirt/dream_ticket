@@ -81,7 +81,7 @@ CREATE INDEX u_grp_name_idx ON user_groups(group_name);
 --DROP VIEW course_groups;
 
 CREATE VIEW course_groups AS
-SELECT username, course_code, group_name
+SELECT username, course_code, group_name, description
 FROM groups NATURAL JOIN user_groups;
 /*
 DELETE FROM courses CASCADE;
