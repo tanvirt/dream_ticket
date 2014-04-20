@@ -22,7 +22,9 @@ while($row = $stmt->fetch()) {
 		<tr>
 			<td>'.$row['course_code'].'</td>
 			<td>'.$row['title'].'</td>
-			<td><input class="button6" type="button" value="Add" onclick="add_course(\''.$row['course_code'].'\')"></td>
+			<td><input class="button6" type="button" value="Add" onclick="add_course(\''.$row['course_code'].'\');
+					document.getElementById(\'create_response\').style.display=\'none\'; 
+					document.getElementById(\'add_response\').style.display=\'block\'"></td>
 		</tr>';
 }
 $table .= '</table>';

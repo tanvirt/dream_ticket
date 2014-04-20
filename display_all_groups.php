@@ -24,7 +24,9 @@ while($row = $stmt->fetch()) {
 			<td>'.$row['course_code'].'</td>
 			<td>'.$row['group_name'].'</td>
 			<td>'.$row['description'].'</td>
-			<td><input class="button6" type="button" value="Add" onclick="add_group(\''.$row['course_code'].'\', \''.$row['group_name'].'\')"></td>
+			<td><input class="button6" type="button" value="Add" onclick="add_group(\''.$row['course_code'].'\', \''.$row['group_name'].'\');
+					document.getElementById(\'create_response\').style.display=\'none\'; 
+					document.getElementById(\'add_response\').style.display=\'block\'"></td>
 		</tr>';
 }
 $table .= '</table>';

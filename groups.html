@@ -7,26 +7,41 @@
 	</head>
 	<body>
 		<div class="body">
-			<span class="profile"><a href="profile.html">Profile</a></span>
+			<a class="profile" href="profile.html">Profile</a></span>
 			
-			<span class="logout"><a href="logout.php">Log Out</a></span>
+			<a class="logout" href="logout.php">Log Out</a>
 			
 			<div>
 				<br/><br/>
-				<button class="button3" type="button" disabled>Create a new group</button>
+				<button class="button3" type="button" disabled>Create and add a new group</button>
 				<br/><br/>
-				<form action="" onsubmit="create_course(this.course_code.value, this.title.value)">
-					<input type="text" name="course_code" placeholder="Course Code"/>
-					<input type="text" name="title" placeholder="Group Name"/><br/><br/>
+				<form action="" onsubmit="create_group(this.course_code.value, this.group_name.value, this.description.value); return false;">
+					<input type="text" name="course_code" placeholder="Course Code" required 
+						onfocus="document.getElementById('create_response').style.display='none'; 
+						document.getElementById('add_response').style.display='none'"
+					/>
+					<input type="text" name="group_name" placeholder="Group Name" required 
+						onfocus="document.getElementById('create_response').style.display='none'; 
+						document.getElementById('add_response').style.display='none'"
+					/>
+					<br/><br/>
 					Description<br/>
-					<textarea class="description" type="text" name="description"/></textarea><br/>
-					<input class="button9" type="submit" value="Create and Add"/>
+					<textarea class="description" type="text" name="description" 
+						onfocus="document.getElementById('create_response').style.display='none'; 
+						document.getElementById('add_response').style.display='none'"/></textarea>
+					<br/>
+					<input class="button9" type="submit" value="Create and Add" 
+						onfocus="document.getElementById('create_response').style.display='block'" 
+						onclick="document.getElementById('add_response').style.display='none'"
+					/>
 				</form>
 				<div id="create_response"></div>
 				
 				<br/>
 				<div id="add_response"></div>
-				<button id="display_button" class="button4" type="button" >See available groups</button>
+				<button id="display_button" class="button4" type="button">
+					See available groups
+				</button>
 				
 				<div id="display_response"></div>
 			</div>
