@@ -15,20 +15,20 @@ CREATE TABLE accounts (
 );
 
 CREATE TABLE courses (
-	course_code CHAR(7) PRIMARY KEY,
+	course_code CHAR(8) PRIMARY KEY,
 	title VARCHAR(60)
 );
 
 CREATE TABLE groups (
 	group_name VARCHAR(60) PRIMARY KEY,
 	description TEXT DEFAULT 'None',
-	course_code CHAR(7) REFERENCES courses(course_code),
+	course_code CHAR(8) REFERENCES courses(course_code),
 	owner VARCHAR(60) REFERENCES accounts(username)
 );
 
 CREATE TABLE user_courses (
 	username VARCHAR(60) REFERENCES accounts(username),
-	course_code CHAR(7) REFERENCES courses(course_code)
+	course_code CHAR(8) REFERENCES courses(course_code)
 );
 
 CREATE TABLE user_groups (
@@ -39,7 +39,7 @@ CREATE TABLE user_groups (
 CREATE TABLE course_discussions (
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(60) REFERENCES accounts(username),
-	course_code CHAR(7) REFERENCES courses(course_code),
+	course_code CHAR(8) REFERENCES courses(course_code),
 	post TEXT NOT NULL,
 	time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -52,16 +52,16 @@ CREATE TABLE group_discussions (
 	time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 /*
-DROP INDEX acc_user_idx;
-DROP INDEX crs_code_idx;
-DROP INDEX crs_title_idx;
-DROP INDEX grp_name_idx;
-DROP INDEX grp_code_idx;
-DROP INDEX grp_owner_idx;
-DROP INDEX u_crs_user_idx;
-DROP INDEX u_crs_code_idx;
-DROP INDEX u_grp_user_idx;
-DROP INDEX u_grp_name_idx;
+DROP INDEX IF EXISTS acc_user_idx;
+DROP INDEX IF EXISTS crs_code_idx;
+DROP INDEX IF EXISTS crs_title_idx;
+DROP INDEX IF EXISTS grp_name_idx;
+DROP INDEX IF EXISTS grp_code_idx;
+DROP INDEX IF EXISTS grp_owner_idx;
+DROP INDEX IF EXISTS u_crs_user_idx;
+DROP INDEX IF EXISTS u_crs_code_idx;
+DROP INDEX IF EXISTS u_grp_user_idx;
+DROP INDEX IF EXISTS u_grp_name_idx;
 */
 CREATE INDEX acc_user_idx ON accounts(username);
 
@@ -78,7 +78,7 @@ CREATE INDEX u_crs_code_idx ON user_courses(course_code);
 CREATE INDEX u_grp_user_idx ON user_groups(username);
 CREATE INDEX u_grp_name_idx ON user_groups(group_name);
 
---DROP VIEW course_groups;
+--DROP VIEW IF EXISTS course_groups;
 
 CREATE VIEW course_groups AS
 SELECT username, course_code, group_name, description
@@ -125,5 +125,5 @@ VALUES
 ('tanvirt', 'Structs'),
 ('cs_tim', 'Salespeople'),
 ('cs_tim', 'Structs'),
-('cs_tim', 'CIS4301');
+('cs_tim', 'Databuds');
 */
