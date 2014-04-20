@@ -56,3 +56,13 @@ function display_group_messages(group_name) {
 	xmlhttp.open("GET", "display_group_messages.php?group_name="+group_name, true);
 	xmlhttp.send();
 }
+
+function send_message(message, type, value) {
+	if(type == "" || value == "") {
+		document.getElementById('val_button').value = 'Please make a selection';
+		return;
+	}
+	xmlhttp.open("GET", "send_"+type+"_message.php?message="+message+"&value="+value, true);
+	xmlhttp.send();
+	console.log(message+' '+type+' '+value);
+}

@@ -8,7 +8,8 @@
 	<body>
 		<div class="body">
 			<a class="profile" href="profile.html">Profile</a></span>
-			
+			<a class="options_button" href="options.html">Options</a>
+			<br/>
 			<a class="logout" href="logout.php">Log Out</a>
 			
 			<br/><br/>
@@ -28,6 +29,15 @@
 				<div id="group_response"></div>
 			</div>
 			
+			<form id="message" action="" onsubmit="send_message(this.message.value, this.type.value, this.val.value); return false;">
+				<textarea id="send-message" type="text" name="message" required placeholder="   Write a message"></textarea>
+				<input id="hidden_type" type="hidden" name="type" value=""/>
+				<input id="hidden_val" type="hidden" name="val" value=""/>
+				<input id="send_button" class="button" type="submit" value="Send"/>
+				<input id="val_button" class="button10" type="button" value="">
+				<br/><br/>
+			</form>
+			<br/>
 			<div id="messages">
 				<br/><br/>
 				Make a Selection

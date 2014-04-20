@@ -50,6 +50,10 @@ tr:nth-child(2n) {
 	float: right;
 }
 
+.options_button {
+	float: right;
+}
+
 .form {
 	text-align: center;
 	background-color: hsl(180, 50%, 85%);
@@ -66,9 +70,21 @@ tr:nth-child(2n) {
 	padding: 1em;
 }
 
+#send-message {
+	height: 5em;
+	max-height: 5em;
+	width: 68.4%;
+	max-width: 68.4%;
+	float: right;
+}
+
+#send_button {
+	float: right;
+}
+
 #messages {
 	border: 1px solid hsl(210, 75%, 55%);
-	max-height: 30em;
+	max-height: 25em;
 	width: 65%;
 	float: right;
 	font-family: "Myriad Pro","Segoe UI",Helvetica, Arial, sans-serif;
@@ -94,6 +110,7 @@ tr:nth-child(2n) {
 	text-align: center;
 	text-shadow: 1px 1px 0px gray;
 	outline: none;
+	word-wrap: break-word;
 }
 .button:hover {
 	background-color: hsl(30, 100%, 50%);
@@ -114,6 +131,7 @@ tr:nth-child(2n) {
 	width: 15em;
 	text-align: left;
 	text-shadow: 1px 1px 0px gray;
+	word-wrap: break-word;
 }
 .button2:hover {
 	background-color: hsl(30, 100%, 50%);
@@ -136,21 +154,7 @@ tr:nth-child(2n) {
 	text-align: left;
 	text-shadow: 1px 1px 0px gray;
 	outline: none;
-}
-
-.button3 {
-	background-color: hsl(210, 75%, 55%);
-	border: 1px solid hsl(210, 80%, 60%);
-	color: white;
-	font-family: Arial;
-	font-size: 0.95em;
-	font-weight: bold;
-	min-height: 2em;
-	line-height: 25px;
-	width: 15em;
-	text-align: left;
-	text-shadow: 1px 1px 0px gray;
-	outline: none;
+	word-wrap: break-word;
 }
 
 .button4 {
@@ -167,6 +171,7 @@ tr:nth-child(2n) {
 	text-shadow: 1px 1px 0px gray;
 	margin-top: -1px;
 	outline: none;
+	word-wrap: break-word;
 }
 .button4:hover {
 	background-color: hsl(30, 100%, 50%);
@@ -188,6 +193,7 @@ tr:nth-child(2n) {
 	text-align: left;
 	text-shadow: 1px 1px 0px gray;
 	outline: none;
+	word-wrap: break-word;
 }
 
 .button6 {
@@ -202,6 +208,7 @@ tr:nth-child(2n) {
 	text-align: center;
 	text-shadow: 1px 1px 0px gray;
 	outline: none;
+	word-wrap: break-word;
 }
 .button6:hover {
 	background-color: hsl(30, 100%, 50%);
@@ -224,6 +231,7 @@ tr:nth-child(2n) {
 	text-align: left;
 	text-shadow: 1px 1px 0px gray;
 	outline: none;
+	word-wrap: break-word;
 }
 
 .button9 {
@@ -238,6 +246,7 @@ tr:nth-child(2n) {
 	text-align: center;
 	text-shadow: 1px 1px 0px gray;
 	outline: none;
+	word-wrap: break-word;
 }
 .button9:hover {
 	background-color: hsl(30, 100%, 50%);
@@ -245,4 +254,20 @@ tr:nth-child(2n) {
 .button9:active {
 	position: relative;
 	top: 1px;
+}
+
+.button10 {
+	background-color: hsl(210, 75%, 55%);
+	border: 1px solid hsl(210, 80%, 60%);
+	color: white;
+	font-family: Arial;
+	font-size: 0.95em;
+	min-height: 2em;
+	line-height: 25px;
+	max-width: 68.4%;
+	text-align: left;
+	text-shadow: 1px 1px 0px gray;
+	outline: none;
+	float: right;
+	word-wrap: break-word;
 }

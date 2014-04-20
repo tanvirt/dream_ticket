@@ -23,11 +23,17 @@ $stmt->execute();
 $row = $stmt->fetch();
 
 if($row) {
-	echo '<input class="button2" type="button" value='.$row['group_name'].' 
-			onclick="display_group_messages(\''.$row['group_name'].'\')"><br/>';
+	echo '<input class="button2" type="button" value=\''.$row['group_name'].'\'
+			onclick="display_group_messages(\''.$row['group_name'].'\');
+			document.getElementById(\'hidden_type\').value=\'group\';
+			document.getElementById(\'val_button\').value=\''.$row['group_name'].'\';
+			document.getElementById(\'hidden_val\').value=\''.$row['group_name'].'\'"><br/>';
 	while($row = $stmt->fetch()) {
-		echo '<input class="button2" type="button" value='.$row['group_name'].' 
-				onclick="display_group_messages(\''.$row['group_name'].'\')"><br/>';
+		echo '<input class="button2" type="button" value=\''.$row['group_name'].'\'
+				onclick="display_group_messages(\''.$row['group_name'].'\');
+				document.getElementById(\'hidden_type\').value=\'group\';
+				document.getElementById(\'val_button\').value=\''.$row['group_name'].'\';
+				document.getElementById(\'hidden_val\').value=\''.$row['group_name'].'\'"><br/>';
 	}
 }
 else

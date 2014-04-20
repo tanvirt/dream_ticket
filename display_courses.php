@@ -20,15 +20,21 @@ $stmt->execute();
 $row = $stmt->fetch();
 
 if($row) {
-	echo '<input class="button2" type="button" value='.$row['course_code'].' 
+	echo '<input class="button2" type="button" value=\''.$row['course_code'].'\' 
 				onclick="display_groups(\''.$row['course_code'].'\'); 
 				document.getElementById(\'group_response\').style.display=\'block\';
+				document.getElementById(\'hidden_type\').value=\'course\';
+				document.getElementById(\'hidden_val\').value=\''.$row['course_code'].'\';
+				document.getElementById(\'val_button\').value=\''.$row['course_code'].'\';
 				change_group_button(\''.$row['course_code'].'\')"
 				onfocus="display_course_messages(\''.$row['course_code'].'\')"><br/>';
 	while($row = $stmt->fetch()) {
-		echo '<input class="button2" type="button" value='.$row['course_code'].' 
+		echo '<input class="button2" type="button" value=\''.$row['course_code'].'\'
 				onclick="display_groups(\''.$row['course_code'].'\'); 
 				document.getElementById(\'group_response\').style.display=\'block\';
+				document.getElementById(\'hidden_type\').value=\'course\';
+				document.getElementById(\'hidden_val\').value=\''.$row['course_code'].'\';
+				document.getElementById(\'val_button\').value=\''.$row['course_code'].'\';
 				change_group_button(\''.$row['course_code'].'\')"
 				onfocus="display_course_messages(\''.$row['course_code'].'\')"><br/>';
 	}
