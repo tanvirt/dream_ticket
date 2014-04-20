@@ -44,3 +44,15 @@ group_button.onclick = function() {
         div.style.display = 'block';
     }
 };
+
+function display_course_messages(course_code) {
+	respond_in("messages");
+	xmlhttp.open("GET", "display_course_messages.php?course_code="+course_code, true);
+	xmlhttp.send();
+}
+
+function display_group_messages(group_name) {
+	respond_in("messages");
+	xmlhttp.open("GET", "display_group_messages.php?group_name="+group_name, true);
+	xmlhttp.send();
+}
