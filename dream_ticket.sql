@@ -22,32 +22,32 @@ CREATE TABLE courses (
 CREATE TABLE groups (
 	group_name VARCHAR(60) PRIMARY KEY,
 	description TEXT DEFAULT 'None',
-	course_code CHAR(8) REFERENCES courses(course_code),
-	owner VARCHAR(60) REFERENCES accounts(username)
+	course_code CHAR(8) REFERENCES courses(course_code) ON UPDATE CASCADE ON DELETE CASCADE,
+	owner VARCHAR(60) REFERENCES accounts(username) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE user_courses (
-	username VARCHAR(60) REFERENCES accounts(username),
-	course_code CHAR(8) REFERENCES courses(course_code)
+	username VARCHAR(60) REFERENCES accounts(username) ON UPDATE CASCADE ON DELETE CASCADE,
+	course_code CHAR(8) REFERENCES courses(course_code) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE user_groups (
-	username VARCHAR(60) REFERENCES accounts(username),
-	group_name VARCHAR(60) REFERENCES groups(group_name)
+	username VARCHAR(60) REFERENCES accounts(username) ON UPDATE CASCADE ON DELETE CASCADE,
+	group_name VARCHAR(60) REFERENCES groups(group_name) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE course_discussions (
 	id SERIAL PRIMARY KEY,
-	username VARCHAR(60) REFERENCES accounts(username),
-	course_code CHAR(8) REFERENCES courses(course_code),
+	username VARCHAR(60) REFERENCES accounts(username) ON UPDATE CASCADE ON DELETE CASCADE,
+	course_code CHAR(8) REFERENCES courses(course_code) ON UPDATE CASCADE ON DELETE CASCADE,
 	post TEXT NOT NULL,
 	time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE group_discussions (
 	id SERIAL PRIMARY KEY,
-	username VARCHAR(60) REFERENCES accounts(username),
-	group_name VARCHAR(60) REFERENCES groups(group_name),
+	username VARCHAR(60) REFERENCES accounts(username) ON UPDATE CASCADE ON DELETE CASCADE,
+	group_name VARCHAR(60) REFERENCES groups(group_name) ON UPDATE CASCADE ON DELETE CASCADE,
 	post TEXT NOT NULL,
 	time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -83,6 +83,24 @@ CREATE INDEX u_grp_name_idx ON user_groups(group_name);
 CREATE VIEW course_groups AS
 SELECT username, course_code, group_name, description
 FROM groups NATURAL JOIN user_groups;
+
+--DROP FUNCTION IF EXISTS create_add_func();
+
+CREATE OR REPLACE FUNCTION create_add_func() RETURNS TRIGGER AS $$
+	BEGIN
+		INSERT INTO groups VALUES (NEW.group_name, NEW.description, NEW.course_code, NEW.username);
+		INSERT INTO user_groups VALUES (NEW.username, NEW.group_name);
+		RETURN NEW;
+	END;
+$$ LANGUAGE plpgsql;
+
+--DROP TRIGGER IF EXISTS create_add_trigger ON course_groups;
+
+CREATE TRIGGER create_add_trigger
+INSTEAD OF INSERT ON course_groups
+FOR EACH ROW
+EXECUTE PROCEDURE create_add_func();
+
 /*
 DELETE FROM courses CASCADE;
 DELETE FROM groups CASCADE;
