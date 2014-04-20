@@ -36,19 +36,19 @@ CREATE TABLE user_groups (
 	group_name VARCHAR(60) REFERENCES groups(group_name) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE course_discussions (
+CREATE TABLE course_messages (
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(60) REFERENCES accounts(username) ON UPDATE CASCADE ON DELETE CASCADE,
 	course_code CHAR(8) REFERENCES courses(course_code) ON UPDATE CASCADE ON DELETE CASCADE,
-	post TEXT NOT NULL,
+	message TEXT NOT NULL,
 	time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE group_discussions (
+CREATE TABLE group_messages (
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(60) REFERENCES accounts(username) ON UPDATE CASCADE ON DELETE CASCADE,
 	group_name VARCHAR(60) REFERENCES groups(group_name) ON UPDATE CASCADE ON DELETE CASCADE,
-	post TEXT NOT NULL,
+	message TEXT NOT NULL,
 	time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 /*
