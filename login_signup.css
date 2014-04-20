@@ -328,3 +328,27 @@ tr:nth-child(2n) {
 	position: relative;
 	top: 1px;
 }
+
+.button13 {
+	background-color: hsl(210, 75%, 55%);
+	border: 1px solid hsl(210, 80%, 60%);
+	color: white;
+	font-family: Arial;
+	font-size: 0.95em;
+	font-weight: bold;
+	min-height: 2em;
+	line-height: 25px;
+	width: 10em;
+	text-align: left;
+	text-shadow: 1px 1px 0px gray;
+	margin-top: -1px;
+	outline: none;
+	word-wrap: break-word;
+}
+.button13:hover {
+	background-color: hsl(30, 100%, 50%);
+}
+.button13:active {
+	position: relative;
+	top: 1px;
+}

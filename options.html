@@ -13,23 +13,20 @@
 			<a class="logout" href="logout.php">Log Out</a>
 			<br/><br/>
 			<div class="form4">
-				<select class="button8">
-					<option value="">Account</option>
-					<option value="">Change username</option>
-					<option value="">Change password</option>
-				</select>
-				
-				<select class="button8">
-					<option class="button2" value="">Change Groups Created</option>
-					<!-- use php to fill -->
-				</select>
-				
-				<select class="button8">
-					<option class="button2" value="">Delete course</option>
-					<!-- use php to fill -->
-				</select>
-				
-				<input class="button8" type="button" value="Delete Account"/>
+				<input class="button13" type="button" value="Change account"/>
+				<select id="change_account" class="button8"></select>
+				<br/>
+				<input class="button13" type="button" value="Change group"/>
+				<select id="change_group" class="button8"></select>
+				<br/><br/>
+				<input class="button13" type="button" value="Delete group"/>
+				<select id="delete_group" class="button8"></select>
+				<br/>
+				<input class="button13" type="button" value="Delete course"/>
+				<select id="delete_course" class="button8"></select>
+				<br/><br/>
+				<input class="button13" type="button" value="Delete account"/>
+				<br/><br/>
 			</div>
 			<div id="options">
 				<br/><br/>
@@ -37,5 +34,7 @@
 				<br/><br/><br/>
 			</div>
 		</div>
+		<script type="text/javascript" src="xmlhttp.js"></script>
+		<script type="text/javascript" src="options.js"></script>
 	</body>
 </html>

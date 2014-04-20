@@ -26,6 +26,7 @@ if($row) {
 				document.getElementById(\'hidden_type\').value=\'course\';
 				document.getElementById(\'hidden_val\').value=\''.$row['course_code'].'\';
 				document.getElementById(\'val_button\').value=\''.$row['course_code'].'\';
+				document.getElementById(\'messages\').scrollTop=document.getElementById(\'messages\').scrollHeight;
 				change_group_button(\''.$row['course_code'].'\')"
 				onfocus="display_course_messages(\''.$row['course_code'].'\')"><br/>';
 	while($row = $stmt->fetch()) {
@@ -35,6 +36,7 @@ if($row) {
 				document.getElementById(\'hidden_type\').value=\'course\';
 				document.getElementById(\'hidden_val\').value=\''.$row['course_code'].'\';
 				document.getElementById(\'val_button\').value=\''.$row['course_code'].'\';
+				document.getElementById(\'messages\').scrollTop=document.getElementById(\'messages\').scrollHeight;
 				change_group_button(\''.$row['course_code'].'\')"
 				onfocus="display_course_messages(\''.$row['course_code'].'\')"><br/>';
 	}

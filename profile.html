@@ -30,7 +30,8 @@
 			</div>
 			
 			<form id="message" action="" onsubmit="send_message(this.message.value, this.type.value, this.val.value); return false;">
-				<textarea id="send-message" type="text" name="message" required placeholder="   Write a message"></textarea>
+				<textarea id="send-message" type="text" name="message" required placeholder="   Write a message"
+					onfocus="clear_text()"></textarea>
 				<input id="hidden_type" type="hidden" name="type" value=""/>
 				<input id="hidden_val" type="hidden" name="val" value=""/>
 				<input id="send_button" class="button" type="submit" value="Send"/>

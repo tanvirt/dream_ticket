@@ -10,15 +10,24 @@ $dbh = new PDO('pgsql:host='.$db->{'host'}.';port='.$db->{'port'}.';dbname='.$db
 	or die('Could not connect to database');
 
 $username = $_SESSION['username'];
-$group_name = $_GET['value'];
-$message = htmlspecialchars($_GET['message']);
 
-$query = 'INSERT INTO group_messages (username, group_name, message)
-			VALUES (:username, :group_name, :message)';
+$query = 'SELECT group_name
+			FROM groups
+			WHERE owner = :username
+			ORDER BY group_name ASC';
 $stmt = $dbh->prepare($query);
 $stmt->bindParam(':username', $username);
-$stmt->bindParam(':group_name', $group_name);
-$stmt->bindParam(':message', $message);
 $stmt->execute();
+$row = $stmt->fetch();
+
+//<option class="button2" value=""></option>
+
+if($row) {
+	echo '<option class="button2" value=\''.$row['group_name'].'\'>'.$row['group_name'].'</option>';
+	while($row = $stmt->fetch())
+		echo '<option class="button2" value=\''.$row['group_name'].'\'>'.$row['group_name'].'</option>';
+}
+else
+	echo '<option class="button2" value="">None</option>';
 
 $dbh = null;

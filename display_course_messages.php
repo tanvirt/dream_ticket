@@ -10,7 +10,7 @@ $query = "SELECT username, message,
 				TO_CHAR(time_posted, 'Mon dd') AS date, EXTRACT(HOUR FROM time_posted) AS hour, EXTRACT(MINUTE FROM time_posted) AS minute
 			FROM course_messages
 			WHERE course_code = :course_code
-			ORDER BY id DESC";
+			ORDER BY id ASC";
 $stmt = $dbh->prepare($query);
 $stmt->bindParam(':course_code', $course_code);
 $stmt->execute();

@@ -64,5 +64,8 @@ function send_message(message, type, value) {
 	}
 	xmlhttp.open("GET", "send_"+type+"_message.php?message="+message+"&value="+value, true);
 	xmlhttp.send();
-	console.log(message+' '+type+' '+value);
+}
+
+function clear_text() {
+	document.getElementById("message").reset();
 }
