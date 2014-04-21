@@ -13,14 +13,14 @@
 			<a class="logout" href="logout.php">Log Out</a>
 			<br/><br/>
 			<div class="form4">
-				<form>
-					<input class="button13" type="button" value="Change account"/>
-					<select id="change-account" class="button8" onmouseover="display_account_options()"></select>
+				<form action="" onsubmit="display_change_account(this.account_option.value); return false;">
+					<input class="button13" type="button" name="change" value="Change account"/>
+					<select id="change-account" name="account_option" class="button8" onmouseover="display_account_options()"></select>
 					<input type="submit" value="Submit">
 				</form>
-				<form>
-					<input class="button13" type="button" value="Change group"/>
-					<select id="change-group" class="button8" onmouseover="display_created_groups_options()"></select>
+				<form action="" onsubmit="display_change_group(this.group_name.value); return false;">
+					<input class="button13" type="button" name="change" value="Change group"/>
+					<select id="change-group" name="group_name" class="button8" onmouseover="display_created_groups_options()"></select>
 					<input type="submit" value="Submit">
 				</form>
 				<br/>

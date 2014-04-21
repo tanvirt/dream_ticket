@@ -67,3 +67,31 @@ function delete_course(course_code) {
 		xmlhttp.send();
 	}
 }
+
+function display_change_account(account_option) {
+	if(account_option == '') {
+		return;
+	}
+	respond_in("options");
+	xmlhttp.open("GET", "display_change_account.php?account_option="+account_option, true);
+	xmlhttp.send();
+	console.log(account_option);
+}
+
+function display_change_group(group_name) {
+	if(group_name == '') {
+		return;
+	}
+	respond_in("options");
+	xmlhttp.open("GET", "display_change_group.php?group_name="+group_name, true);
+	xmlhttp.send();
+	console.log(group_name);
+}
+
+function change_account(info) {
+	
+}
+
+function change_group(info) {
+	
+}
