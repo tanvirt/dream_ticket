@@ -75,7 +75,6 @@ function display_change_account(account_option) {
 	respond_in("options");
 	xmlhttp.open("GET", "display_change_account.php?account_option="+account_option, true);
 	xmlhttp.send();
-	console.log(account_option);
 }
 
 function display_change_group(group_name) {
@@ -85,13 +84,30 @@ function display_change_group(group_name) {
 	respond_in("options");
 	xmlhttp.open("GET", "display_change_group.php?group_name="+group_name, true);
 	xmlhttp.send();
-	console.log(group_name);
 }
 
-function change_account(info) {
-	
+function change_username(current_username, new_username) {
+	respond_in("options");
+	xmlhttp.open("POST","change_username.php",true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.send("current_username="+current_username+"&new_username="+new_username);
 }
 
-function change_group(info) {
-	
+function change_password(current_password, new_password) {
+	respond_in("options");
+	xmlhttp.open("POST","change_password.php",true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.send("current_password="+current_password+"&new_password="+new_password);
+}
+
+function change_group_name(new_group_name) {
+	respond_in("options");
+	xmlhttp.open("GET", "change_group_name.php?new_group_name="+new_group_name, true);
+	xmlhttp.send();
+}
+
+function change_group_description(new_description) {
+	respond_in("options");
+	xmlhttp.open("GET", "change_group_description.php?new_description="+new_description, true);
+	xmlhttp.send();
 }
