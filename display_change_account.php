@@ -23,8 +23,8 @@ if($account_option == 'change_user') {
 else {
 	echo 	'<form action="" onsubmit="change_password(this.current_password.value, this.new_password.value); return false;">'
 	.			'<button class="button3" type="button" disabled>Change password</button><br/><br/>'
-	.			'<input class="text" type="text" name="current_password" placeholder="Current password" required/>'
-	.			'<input class="text" type="text" name="new_password" placeholder="New password" required/>'
+	.			'<input class="text" type="password" name="current_password" placeholder="Current password" required/>'
+	.			'<input class="text" type="password" name="new_password" placeholder="New password" required/>'
 	.			'&nbsp;&nbsp;<input class="button4" type="submit" value="Change"/>'
 	.		'</form>';
 }

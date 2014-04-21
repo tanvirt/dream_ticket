@@ -6,15 +6,20 @@
 		<link rel="stylesheet" type="text/css" href="login_signup.css"/>
 	</head>
 	<body>
-		<?php
+		<div class="body">
+			<?php
 
-		session_start();
-
-		session_destroy();
-		
-		echo "You have been logged out. <a href='login.html'>Click here</a> to log back in";
-		
-		?>
+			session_start();
+			
+			if(!isset($_SESSION['username']))
+				die('You must be logged in to access this page<br/>'."<a href='login.html'>Click here</a> to log in");
+			
+			session_destroy();
+			
+			echo "You have been logged out. <a href='login.html'>Click here</a> to log back in";
+			
+			?>
+		</div>
 	</body>
 <html>
 

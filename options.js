@@ -100,14 +100,14 @@ function change_password(current_password, new_password) {
 	xmlhttp.send("current_password="+current_password+"&new_password="+new_password);
 }
 
-function change_group_name(new_group_name) {
+function change_group_name(group_name, new_group_name) {
 	respond_in("options");
-	xmlhttp.open("GET", "change_group_name.php?new_group_name="+new_group_name, true);
+	xmlhttp.open("GET", "change_group_name.php?group_name="+group_name+"&new_group_name="+new_group_name, true);
 	xmlhttp.send();
 }
 
-function change_group_description(new_description) {
+function change_group_description(group_name, new_description) {
 	respond_in("options");
-	xmlhttp.open("GET", "change_group_description.php?new_description="+new_description, true);
+	xmlhttp.open("GET", "change_group_description.php?group_name="+group_name+"&new_description="+new_description, true);
 	xmlhttp.send();
 }

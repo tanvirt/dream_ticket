@@ -1,6 +1,5 @@
 <?php
 
-//remember htmlspecialchars()
 session_start();
 
 if(!isset($_SESSION['username']))
@@ -11,8 +10,19 @@ $dbh = new PDO('pgsql:host='.$db->{'host'}.';port='.$db->{'port'}.';dbname='.$db
 	or die('Could not connect to database');
 
 $username = $_SESSION['username'];
-$new_description = $_GET['new_description'];
+$group_name = $_GET['group_name'];
+$new_description = htmlspecialchars($_GET['new_description']);
 
-echo 'it works!!!!';
+$query = 'UPDATE groups
+			SET description = :new_description
+			WHERE owner = :username
+				AND group_name = :group_name';
+$stmt = $dbh->prepare($query);
+$stmt->bindParam(':new_description', $new_description);
+$stmt->bindParam(':username', $username);
+$stmt->bindParam(':group_name', $group_name);
+$stmt->execute();
+
+echo 'Group description for '.$group_name.' was changed';
 
 $dbh = null;

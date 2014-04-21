@@ -13,12 +13,12 @@ $username = $_SESSION['username'];
 $group_name = $_GET['group_name'];
 
 echo	'<button class="button3" type="button" disabled>'.$group_name.'</button><br/><br/>'
-.	 	'<form action="" onsubmit="change_group_name(this.new_group_name.value); return false;">'
+.	 	'<form action="" onsubmit="change_group_name(\''.$group_name.'\', this.new_group_name.value); return false;">'
 .			'<button class="button3" type="button" disabled>Change group name</button><br/><br/>'
 .			'<input class="text" type="text" name="new_group_name" placeholder="New group name" required/>'
 .			'&nbsp;&nbsp;<input class="button4" type="submit" value="Change"/>'
 .		'</form><br/><br/>'
-.	 	'<form action="" onsubmit="change_group_description(this.new_description.value); return false;">'
+.	 	'<form action="" onsubmit="change_group_description(\''.$group_name.'\', this.new_description.value); return false;">'
 .			'<button class="button3" type="button" disabled>Change group description</button><br/><br/>'
 .			'<textarea class="description" type="text" name="new_description"></textarea><br/><br/>'
 .			'<input class="button4" type="submit" value="Change"/>'

@@ -124,6 +124,8 @@ DELETE FROM courses CASCADE;
 DELETE FROM groups CASCADE;
 DELETE FROM user_courses;
 DELETE FROM user_groups;
+DELETE FROM course_messages;
+DELETE FROM group_messages;
 
 INSERT INTO courses (course_code, title)
 VALUES
