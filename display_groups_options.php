@@ -26,6 +26,6 @@ if($row) {
 		echo '<option class="button2" value=\''.$row['group_name'].'\'>'.$row['group_name'].'</option>';
 }
 else
-	echo '<option class="button2" value="">None</option>';
+	echo '<option class="button2" value="None">None</option>';
 
 $dbh = null;

@@ -15,23 +15,23 @@
 			<div class="form4">
 				<form>
 					<input class="button13" type="button" value="Change account"/>
-					<select id="change_account" class="button8" onmouseover="display_account_options()"></select>
+					<select id="change-account" class="button8" onmouseover="display_account_options()"></select>
 					<input type="submit" value="Submit">
 				</form>
 				<form>
 					<input class="button13" type="button" value="Change group"/>
-					<select id="change_group" class="button8" onmouseover="display_created_groups_options()"></select>
+					<select id="change-group" class="button8" onmouseover="display_created_groups_options()"></select>
 					<input type="submit" value="Submit">
 				</form>
 				<br/>
-				<form>
+				<form action="" onsubmit="delete_group(this.group_name.value); return false;">
 					<input class="button13" type="button" value="Delete group"/>
-					<select id="delete_group" class="button8" onmouseover="display_groups_options()"></select>
-					<input type="submit" value="Submit">
+					<select id="delete-group" name="group_name" class="button8" onmouseover="display_groups_options()"></select>
+					<input type="submit" value="Submit" onclick="display_groups_options()"/>
 				</form>
-				<form>
+				<form action="" onsubmit="delete_course(this.course_code.value); return false;">
 					<input class="button13" type="button" value="Delete course"/>
-					<select id="delete_course" class="button8" onmouseover="display_courses_options()"></select>
+					<select id="delete-course" name="course_code" class="button8" onmouseover="display_courses_options()"></select>
 					<input type="submit" value="Submit"/>
 				</form>
 				<br/><br/>

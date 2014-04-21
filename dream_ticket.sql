@@ -98,6 +98,27 @@ CREATE TRIGGER create_add_trigger
 INSTEAD OF INSERT ON course_groups
 FOR EACH ROW
 EXECUTE PROCEDURE create_add_func();
+
+DROP FUNCTION IF EXISTS delete_group_func();
+
+CREATE OR REPLACE FUNCTION delete_group_func() RETURNS TRIGGER AS $$
+	BEGIN
+		DELETE FROM user_groups
+			WHERE username = OLD.username
+				AND group_name = OLD.group_name;
+		DELETE FROM groups
+			WHERE owner = OLD.username
+				AND group_name = OLD.group_name;
+		RETURN NEW;
+	END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS delete_group_trigger ON course_groups;
+
+CREATE TRIGGER delete_group_trigger
+INSTEAD OF DELETE ON course_groups
+FOR EACH ROW
+EXECUTE PROCEDURE delete_group_func();
 /*
 DELETE FROM courses CASCADE;
 DELETE FROM groups CASCADE;

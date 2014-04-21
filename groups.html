@@ -16,7 +16,7 @@
 				<br/><br/>
 				<button class="button3" type="button" disabled>Create and add a new group</button>
 				<br/><br/>
-				<form action="" onsubmit="create_group(this.course_code.value, this.group_name.value, this.description.value); return false;">
+				<form id="group_info" action="" onsubmit="create_group(this.course_code.value, this.group_name.value, this.description.value); return false;">
 					<input type="text" name="course_code" placeholder="Course Code" required 
 						onfocus="document.getElementById('create_response').style.display='none'; 
 						document.getElementById('add_response').style.display='none'"

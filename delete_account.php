@@ -27,7 +27,7 @@
 		
 		session_destroy();
 		
-		echo "Your account has been deleted. <a href='login.html'>Click here</a> to return to the login page";
+		echo "Your account has been deleted. <br/><a href='login.html'>Click here</a> to return to the login page";
 		
 		$dbh = null;
 		
