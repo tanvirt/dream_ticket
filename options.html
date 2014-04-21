@@ -16,23 +16,23 @@
 				<form action="" onsubmit="display_change_account(this.account_option.value); return false;">
 					<input class="button13" type="button" name="change" value="Change account"/>
 					<select id="change-account" name="account_option" class="button8" onmouseover="display_account_options()"></select>
-					<input type="submit" value="Submit">
+					<input class="button" type="submit" value="Submit">
 				</form>
 				<form action="" onsubmit="display_change_group(this.group_name.value); return false;">
 					<input class="button13" type="button" name="change" value="Change group"/>
 					<select id="change-group" name="group_name" class="button8" onmouseover="display_created_groups_options()"></select>
-					<input type="submit" value="Submit">
+					<input class="button "type="submit" value="Submit">
 				</form>
 				<br/>
 				<form action="" onsubmit="delete_group(this.group_name.value); return false;">
 					<input class="button13" type="button" value="Delete group"/>
 					<select id="delete-group" name="group_name" class="button8" onmouseover="display_groups_options()"></select>
-					<input type="submit" value="Submit" onclick="display_groups_options()"/>
+					<input class="button" type="submit" value="Submit" onclick="display_groups_options()"/>
 				</form>
 				<form action="" onsubmit="delete_course(this.course_code.value); return false;">
 					<input class="button13" type="button" value="Delete course"/>
 					<select id="delete-course" name="course_code" class="button8" onmouseover="display_courses_options()"></select>
-					<input type="submit" value="Submit"/>
+					<input class="button" type="submit" value="Submit"/>
 				</form>
 				<br/><br/>
 				<form action="delete_account.php" onsubmit="return confirm('Are you sure you want to delete your account?');">

@@ -346,10 +346,3 @@ tr:nth-child(2n) {
 	outline: none;
 	word-wrap: break-word;
 }
-.button13:hover {
-	background-color: hsl(30, 100%, 50%);
-}
-.button13:active {
-	position: relative;
-	top: 1px;
-}
