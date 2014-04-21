@@ -13,19 +13,30 @@
 			<a class="logout" href="logout.php">Log Out</a>
 			<br/><br/>
 			<div class="form4">
-				<input class="button13" type="button" value="Change account"/>
-				<select id="change_account" class="button8"></select>
+				<form>
+					<input class="button13" type="button" value="Change account"/>
+					<select id="change_account" class="button8" onmouseover="display_account_options()"></select>
+					<input type="submit" value="Submit">
+				</form>
+				<form>
+					<input class="button13" type="button" value="Change group"/>
+					<select id="change_group" class="button8" onmouseover="display_created_groups_options()"></select>
+					<input type="submit" value="Submit">
+				</form>
 				<br/>
-				<input class="button13" type="button" value="Change group"/>
-				<select id="change_group" class="button8"></select>
+				<form>
+					<input class="button13" type="button" value="Delete group"/>
+					<select id="delete_group" class="button8" onmouseover="display_groups_options()"></select>
+					<input type="submit" value="Submit">
+				</form>
+				<form>
+					<input class="button13" type="button" value="Delete course"/>
+					<select id="delete_course" class="button8" onmouseover="display_courses_options()"></select>
+					<input type="submit" value="Submit"/>
+				</form>
 				<br/><br/>
-				<input class="button13" type="button" value="Delete group"/>
-				<select id="delete_group" class="button8"></select>
-				<br/>
-				<input class="button13" type="button" value="Delete course"/>
-				<select id="delete_course" class="button8"></select>
-				<br/><br/>
-				<input class="button13" type="button" value="Delete account"/>
+				<form action="delete_account.php" onsubmit="return confirm('Are you sure you want to delete your account?');">
+					<input class="button13" type="submit" value="Delete account"/>
 				<br/><br/>
 			</div>
 			<div id="options">

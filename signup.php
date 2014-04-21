@@ -43,7 +43,7 @@ if(is_valid_input($user_exists, $username, $password1, $password2)) {
 	$stmt->bindParam(':password_hash', $password_hash);
 	$stmt->execute();
 	
-	echo '<br/>Sign up was successful!';
+	echo 'Sign up was successful!';
 }
 else {
 	output_errors($user_exists, $username, $password1, $password2);

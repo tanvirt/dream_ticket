@@ -20,8 +20,6 @@ $stmt->bindParam(':username', $username);
 $stmt->execute();
 $row = $stmt->fetch();
 
-//<option class="button2" value=""></option>
-
 if($row) {
 	echo '<option class="button2" value=\''.$row['course_code'].'\'>'.$row['course_code'].'</option>';
 	while($row = $stmt->fetch())

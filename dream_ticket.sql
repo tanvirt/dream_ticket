@@ -98,7 +98,6 @@ CREATE TRIGGER create_add_trigger
 INSTEAD OF INSERT ON course_groups
 FOR EACH ROW
 EXECUTE PROCEDURE create_add_func();
-
 /*
 DELETE FROM courses CASCADE;
 DELETE FROM groups CASCADE;
